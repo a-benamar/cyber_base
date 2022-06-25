@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Poste{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau Poste</h1>
+
+    {{ include('poste/_form.html.twig') }}
+
+    <a href="{{ path('app_poste_index') }}">Retour à la liste</a>
+{% endblock %}

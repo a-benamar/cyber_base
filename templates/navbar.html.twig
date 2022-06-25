@@ -1,0 +1,100 @@
+{# debut navbar #}
+<nav class="navbar sticky-top navbar-expand-lg navbar-warning bg-light" style="background-color:  #ec9c8b ;">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="{{ path('app_home') }}"><img src="{{ asset('img/logo-CyberBase.svg') }}" alt="" height="87px" width="100px"/></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon bg-danger"></span>
+		</button>
+		<div class="collapse navbar-collapse ml-5 " id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0  ">
+				<li class="nav-item ">
+					{% if is_granted ("ROLE_ANIMATEUR") %}
+						<a class="nav-link text-bold text-black " aria-current="page" href="{{ path('app_home') }}">Accueil</a>
+
+					{% else %}
+						<a class="nav-link text-bold text-black fs-5 border-bottom border-warning border-3" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
+
+					{% endif %}
+				</li>
+
+				{% if is_granted ("ROLE_ANIMATEUR") %}
+					{# <li class="nav-item">
+						<a class="nav-link text-bold text-black " aria-current="page" href="{{ path('app_calendrier') }}">Calendrier</a>
+					</li> #}
+					
+					<li class="nav-item">
+
+						<a class="nav-link text-bold text-black " aria-current="page" href="{{ path('app_planning_index') }}">Planning</a>
+					</li>
+
+					{% if is_granted ("ROLE_SUPER_ANIMATEUR") %}
+					<li class="nav-item">
+						<a class="nav-link text-bold text-black " aria-current="page" href="{{ path('app_animateur_index') }}">Animateurs</a>
+					</li>
+					{% endif %}
+					<li class="nav-item">
+						<a class="nav-link text-bold text-black " aria-current="page" href="{{ path('app_usager_index') }}">Usagers</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-bold text-black " aria-current="page" href="{{ path('app_listeAtelier_index') }}">Ateliers</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link text-bold text-black text-black " aria-current="page" href="{{ path('app_poste_index') }}">Postes</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-bold text-black " aria-current="page" href="{{ path('app_partenaire_index') }}">Partenaires</a>
+					</li>
+					{% if is_granted ("ROLE_SUPER_ANIMATEUR") %}
+					<li class="nav-item">
+						<a class="nav-link text-bold text-black " aria-current="page" href="{{ path('app_quartier_index') }}">Quartiers</a>
+					</li>
+					{% endif %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle text-bold text-black " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Statistiques
+						</a>
+						
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li>
+								<a class="dropdown-item" href="{{ path('app_chart') }}">Stats Fonctionnement</a>
+
+
+								{# <a class="dropdown-item" href="{{ path('app_chart2') }}">Stats Frequentation</a> #}
+
+							</li>
+						</ul>
+					</li>
+				
+				</li>
+
+				<a class="btn btn-outline-danger" href="{{ path('app_profile') }}">
+					<i class="fa-solid fa-user"></i>
+				</a>
+				</ul>
+			{% endif %}
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end ">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+					{% if app.user %}
+
+						<li class="nav-item">
+							<a class="btn btn-danger ml-3" href="{{ path('app_logout') }}">
+								<i class="fa-solid fa-power-off"></i>
+								Déconnexion</a>
+						</li>
+					{% else %}
+					
+
+				</ul>
+			</div>
+
+		</div>
+		<div class="me-auto mb-2 mb-lg-0 ">
+			<a class="btn btn-primary fw-bold " href="{{ path('app_login') }}">Se Connecter</a>
+		
+	</div>
+	{% endif %}
+		
+	</div>
+	{# fin navbar #}
+</nav>

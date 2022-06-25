@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Quartier{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau Quartier</h1>
+
+    {{ include('quartier/_form.html.twig') }}
+
+    <a href="{{ path('app_quartier_index') }}">Retour à la liste</a>
+{% endblock %}

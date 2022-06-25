@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Animateur
+{% endblock %}
+
+{% block body %}
+<div class="p-3 mb-2 bg-body mx-auto w-50" >
+	<h3 class="text-center bg-secondary shadow p-3">Modifier Animateur</h3>
+</div>
+
+		{{ include('animateur/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+
+ 
+
+		{# <a href="{{ path('app_animateur_index') }}" class="btn btn-warning">back to list</a> #}
+
+{% endblock %}

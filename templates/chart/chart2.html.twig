@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChartController!
+{% endblock %}
+
+{% block body %}
+
+
+	{{ dump(data) }}
+
+
+	<thead>
+		<tr>
+			<th class="text-decoration-underline">STATS USAGERS PAR CATEGORIES</th>
+
+		</tr>
+	</thead>
+	{% for jour in semaine %}
+
+		<div
+			class="row">
+
+
+			{# {{dump(diff)}} #}
+
+
+			<div class="col">
+				<table class="table">
+					<thead>
+						<tr class="bg bg-black">
+							<td>{{jour}}</td>
+							<td>Fréquentation horaires</td>
+						</tr>
+
+					</thead>
+					<tbody>
+						{# {% for lheure in lesHeures %} #}
+					{# {% endfor %} #}
+					{% set i = 0  %}
+						{% for heure in heures %}
+
+							<tr class="table-active">
+							
+								<td>{{heure}}</td>
+							
+						
+								<td>{{data[i]}}</td>
+									{% set i = i + 1  %}
+								
+								{% endfor %}
+							</tr>
+					
+						</tbody>
+					
+				</table>
+			</div>
+
+
+			<div class="col">
+				{{render_chart(chart)}}
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}
+
+{# <tr class="table-primary">
+						<td>10h00-11h00</td>
+						<td>{{ dixEtOnze[0][1] }}</td>
+		
+		
+					</tr>
+					<tr class="table-warning">
+						<td>11h00-12h00</td>
+						<td>{{ onzeEtDouze[0][1] }}</td>
+						{{dump(catDemandeurDemploi[0][1])}}
+		
+					</tr>
+					<tr class="table-success">
+						<td>12h00-13h00</td>
+						<td>{{ douzeEtTreize[0][1] }}</td>
+		
+					</tr>
+					<tr class="table-danger">
+						<td>13h00-14h00</td>
+						<td>{{ treizeEtQuatorze[0][1] }}</td>
+		
+					</tr>
+					<tr class="table-active">
+						<td>14h00-15h00</td>
+						<td>{{ quatorzeEtQuinze[0][1] }}</td>
+		
+		
+					</tr>
+					<tr class="table-primary">
+						<td>15h00-16h00</td>
+						<td>{{ quinzeEtSeize[0][1] }}</td>
+					</tr>
+					<tr class="table-success">
+						<td>16h00-17h00</td>
+						<td>{{ seizeEtDixSept[0][1] }}</td>
+		
+					</tr>
+					<tr class="table-warning">
+						<td>17h00-18h00</td>
+						<td>{{ dixSeptEtDixHuit[0][1] }}</td>
+					</tr>
+					<tr class="table-warning">
+						<td>18h00-19h00</td>
+						<td>{{ dixHuitEtDixNeuf[0][1] }}</td>
+					</tr> #}

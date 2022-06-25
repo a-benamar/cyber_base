@@ -1,0 +1,51 @@
+<div class="row row-cols-1 row-cols-sm-12 row-cols-md-12 p-3 mb-2 bg-body border shadow p-3 rounded mx-auto w-50">
+	{{ form_start(form) }}
+	<div class="col">
+		{{ form_row(form.genre, {
+		  label: 'Sexe'
+		  }) }}
+	</div>
+	<div class="row">
+		<div class="col">
+			{{ form_row(form.nom, {label: 'Nom', 'attr':{'placeholder': 'Nom de l\'animateur'}}) }}
+		</div>
+
+		<div class="col">
+			{{ form_row(form.prenom, {label: 'Prénom', 'attr':{'placeholder': 'Prénom de l\'animateur'}}) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			{{ form_row(form.email, {
+                label: 'E-mail', 'attr':{'placeholder': 'email@exemple.com'}}) }}
+		</div>
+
+		<div class="col">
+			{{ form_row(form.tel, {
+                 label: 'N° téléphone', 'attr':{'placeholder': '0600000000'}}) }}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			{{ form_row(form.plainPassword.first, {
+                 label: 'Mot de passe', 'attr':{'placeholder': '6 caractères au Min'}} ) }}
+		</div>
+		<div class="col">
+
+			{{ form_row(form.plainPassword.second, {
+                 label: 'Confirmation mot de passe', 'attr':{'placeholder': 'Répéter le mot de passe'}}) }}
+		</div>
+	</div>
+	{{ form_row(form.roles, {
+            label: 'Rôle', 'attr':{'placeholder': 'Votre rôle'}}) }}
+
+	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+		<a href="{{ path('app_animateur_index') }}" class="btn btn-secondary">Retour</a>
+		<button class="btn btn-primary">{{ button_label|default('Ajouter') }}</button>
+
+	</div>
+	<hr class="text-primary">
+
+	{{ form_end(form) }}
+</div>

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Quartier{% endblock %}
+
+{% block body %}
+    <h1>Edit Quartier</h1>
+
+    {{ include('quartier/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('app_quartier_index') }}">Retour à la liste</a>
+
+    {{ include('quartier/_delete_form.html.twig') }}
+{% endblock %}
