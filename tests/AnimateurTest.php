@@ -7,9 +7,15 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Validation;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-// #[DataProvider\getValidationTestCases]
+
+
 class AnimateurTest extends TestCase
 {
+    /**
+     * @dataProvider getValidationTestCases
+     */
+
+
     // public function testSomething(): void
     // {
     //     $this->assertTrue(true);
@@ -35,12 +41,12 @@ class AnimateurTest extends TestCase
     public function getValidationTestCases()
     {
         return [
-            'Succeeds when data is correct' => ['soupra', 'mani', 'soupramani@yahoo.fr', 'abc7Q@az', true],
+            'Succeeds when data is correct' => ['abdel', 'ben', 'abenamar@gmx.com', 'Admin123@', true],
             'Fails when nom is blank' => ['', 'mani', 'soupramani@yahoo.fr', 'abc7Q@az', false],
             'Fails when prénom is blank' => ['soupra', '', 'soupramani@yahoo.fr', 'abc7Q@az', false],
             'Fails when email is not valid' => ['soupra', 'mani', 'soupramaniyahoo.fr', 'abc7Q@az', false],
             'Fails when password is missing' => ['soupra', 'mani', 'soupramani@yahoo.fr', '', false],
-            'Fails when password contains less than 8 character' => ['soupra', 'mani', 'soupramani@yahoo.fr', 'abc7Q@a', false],
+            'Fails when password contains less than 6 character' => ['soupra', 'mani', 'soupramani@yahoo.fr', 'abc7Q@a', false],
             'Fails when password does not contain a special character' => ['soupra', 'mani', 'soupramani@yahoo.fr', 'abc7Qkla', false],
             'Fails when password does not contain a uppercase character' => ['soupra', 'mani', 'soupramani@yahoo.fr', 'abc7q@kla', false],
             'Fails when password does not contain a lowercase character' => ['soupra', 'mani', 'soupramani@yahoo.fr', '1144A@DF', false],

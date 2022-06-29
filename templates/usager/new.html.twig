@@ -13,90 +13,85 @@
 		<div class="row">
 
 			<div class="col-6">
-				{{ form_row(form.genre, {
-                  label: 'Sexe',
-                  placeholder: "Choisir un usager",
-                  }) }}
+				{{ form_row(form.genre, {label: 'Sexe'}) 
+				 }}
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col">
-				{{ form_row(form.nom, {
-                  label: 'Nom'
-                  }) }}
+				{{ form_row(form.nom, {label: 'Nom', 'attr':{'placeholder': 'Nom'}}) 
+				}}
 			</div>
 
 			<div class="col">
-				{{ form_row(form.prenom, {
-                  label: 'Prénom'
-                }) }}
+				{{ form_row(form.prenom, {label: 'Prénom', 'attr':{'placeholder': 'Prénom'}}) 
+				 }}
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
 
-				{{ form_row(form.adresse) }}
+				{{ form_row(form.adresse, {label: 'Adresse', 'attr':{'placeholder': 'Adresse '}}) 
+				 }}
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col">
 
-				{{ form_row(form.cp, {
-                 label: 'Code postale'
-                 }) }}
+				{{ form_row(form.cp, {label: 'Code postale', 'attr':{'placeholder': 'Code postale '}}) 
+				 }}
 			</div>
 			<div class="col">
 
-				{{ form_row(form.ville) }}
+				{{ form_row(form.ville, {label: 'Ville', 'attr':{'placeholder': 'Ville '}}) 
+				 }}
 			</div>
 			<div class="row">
 				<div class="col">
-					{{ form_row(form.email, {
-                label: 'E-mail'
-                 }) }}
+					{{ form_row(form.email, {label: 'E-mail', 'attr':{'placeholder': 'Adresse mail '}}) 
+				 }}
 				</div>
 
 				<div class="col">
-					{{ form_row(form.tel, {
-                 label: 'Téléphone'
-                 }) }}
+					{{ form_row(form.tel, {label: 'Téléphone', 'attr':{'placeholder': 'Téléphone '}}) 
+				 }}
+				
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col">
 
-					{{ form_row(form.plainPassword.first) }}
+					{{ form_row(form.plainPassword.first, {label: 'Mot de passe', 'attr':{'placeholder': '6 caractères au minimum'}}) 
+				 }}
 				</div>
 				<div class="col">
 
-					{{ form_row(form.plainPassword.second) }}
+					{{ form_row(form.plainPassword.second, {label: 'Confirmatiom mot de passe', 'attr':{'placeholder': 'Répéter le mot de passe'}})
+				 }}
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col">
 
-					{{ form_row(form.categorie, {
-                 label: 'Catégorie',
-                placeholder: "Choisir un catégorie",
-                 }) }}
+					{{ form_row(form.categorie, {label: 'Catégorie'}) 
+				 }}
+				
 				</div>
 				<div class="col">
 
-					{{ form_row(form.niveau, {
-                placeholder: "Choisir un niveau",
-                 }) }}
+					{{ form_row(form.niveau, {label: 'Niveau'}) 
+				 }}
 
 				</div>
 				<div class="col">
 
-					{{ form_row(form.loisir, {
-                placeholder: "Choisir un loisir",
-                 }) }}
-				</div>
+					{{ form_row(form.loisir, {label: 'Loisir', 'attr':{'placeholder': 'Choisir un loisir '}}) 
+				 }}
+				
 			</div>
 
 
@@ -105,17 +100,13 @@
 		<div class="row">
 			<div class="col">
 
-				{{ form_row(form.quartiers, {
-                 label: 'Quartier',
-                placeholder: "Select a value",
-                 }) }}
+				{{ form_row(form.quartiers, {label: 'Quartier', 'attr':{'placeholder': 'Quartier '}}) 
+				 }}
 			</div>
 			<div class="col">
 
-				{{ form_row(form.partenaires, {
-                 label: 'Partenaire',
-                placeholder: "Select a value",
-                 }) }}
+				{{ form_row(form.partenaires, {label: 'Partenaire', 'attr':{'placeholder': 'Partenaire '}}) 
+				 }}
 			</div>
 		</div>
 

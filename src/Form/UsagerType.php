@@ -40,7 +40,7 @@ class UsagerType extends AbstractType
                 'choices'  => [
                     'Salarié' => 'Salarie',
                     'Retraité' => 'Retraité',
-                    'demandeur d\'emploi' => 'demandeur d\'emploi',
+                    'Demandeur d\'emploi' => 'Demandeur d\'emploi',
                     'Collègue' => 'Collègue',
                     'Etudiant' => 'Etudiant',
                     'Scolaire' => 'Scolaire',
@@ -49,6 +49,7 @@ class UsagerType extends AbstractType
                     'Antennes de quartier' => 'Antennes de quartier',
 
                 ],
+                'placeholder' => 'Choisir une Catégorie',
             ])
             ->add('niveau', ChoiceType::class, [
 
@@ -57,6 +58,7 @@ class UsagerType extends AbstractType
                     'Intermidiare' => 'Intermidiare',
                     'Avanvé' => 'Avance',
                 ],
+                'placeholder' => 'Choisir un niveau',
             ])
 
             ->add('loisir')

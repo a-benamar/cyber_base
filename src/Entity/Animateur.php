@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: AnimateurRepository::class)]
 #[UniqueEntity(
     fields: ['email'], 
-    message: 'L\'email que vous indiquez est deja utilisé par un animateur'
+    message: 'L\'email {{ value }} est deja utilisé par un animateur'
     )]
 
 
