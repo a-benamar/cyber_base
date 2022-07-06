@@ -92,7 +92,6 @@ class PlanningController extends AbstractController
             'form'       => $form,
             'atelier'    => $atelier,
             'counts'     => $planningRepository->countUsagerByAtelier(),
-            // 'postes'     => $planningRepository->findUsagerByAtelier($atelier),
             'postes'     => $planningRepository->findPosteLibreByAtelier($atelier),
             'usagers'    => $planningRepository->findUsagerLibreByAtelier($atelier),
 
@@ -141,48 +140,48 @@ class PlanningController extends AbstractController
         return $this->redirectToRoute('app_planning_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/calendrier', name: 'app_calendrier')]
-    public function calendrier(PlanningRepository $planningRepository): Response
-    {
+    // #[Route('/calendrier', name: 'app_calendrier')]
+    // public function calendrier(PlanningRepository $planningRepository): Response
+    // {
       
-        $donnee = file_get_contents('https://calendrier.api.gouv.fr/jours-feries/metropole/2022.json');
-        $donnees = [];
-        $ferie = json_decode($donnee, true);
-        foreach ($ferie as $key => $valeur) {
-            $donnees[] = [
-                'start' => $key,
-                'title' => $valeur,
-            ];
-                }
-        $feries = json_encode($donnees);
+    //     $donnee = file_get_contents('https://calendrier.api.gouv.fr/jours-feries/metropole/2022.json');
+    //     $donnees = [];
+    //     $ferie = json_decode($donnee, true);
+    //     foreach ($ferie as $key => $valeur) {
+    //         $donnees[] = [
+    //             'start' => $key,
+    //             'title' => $valeur,
+    //         ];
+    //             }
+    //     $feries = json_encode($donnees);
 
-        $events = $planningRepository->findAll();
-        $rdvs = [];
-        foreach ($events as $event) {
-            $rdvs[] = [
-                'id' => $event->getId(),
+    //     $events = $planningRepository->findAll();
+    //     $rdvs = [];
+    //     foreach ($events as $event) {
+    //         $rdvs[] = [
+    //             'id' => $event->getId(),
 
-                'start' => $event->getAteliers()->getstart()->format('Y-m-d H:i:s'),
-                'end' => $event->getAteliers()->getend()->format('Y-m-d H:i:s'),
-                // 'postes' => $event->getPostes()->getlibelle(),
-                'title' => "Atelier:  " . $event->getAteliers()->getLibelle() . " ---- Nom d'usager: " 
-                . $event->getUsagers()->getNom() . " " .
-                    $event->getUsagers()->getPrenom() . " - " . $event->getPostes()->getlibelle(),
-                'backgroundColor' => $event->getAteliers()->getbackgroundColor(),
-                'borderColor' => $event->getAteliers()->getBorderColor(),
-                'textColor' => $event->getAteliers()->getTextColor()
+    //             'start' => $event->getAteliers()->getstart()->format('Y-m-d H:i:s'),
+    //             'end' => $event->getAteliers()->getend()->format('Y-m-d H:i:s'),
+    //             // 'postes' => $event->getPostes()->getlibelle(),
+    //             'title' => "Atelier:  " . $event->getAteliers()->getLibelle() . " ---- Nom d'usager: " 
+    //             . $event->getUsagers()->getNom() . " " .
+    //                 $event->getUsagers()->getPrenom() . " - " . $event->getPostes()->getlibelle(),
+    //             'backgroundColor' => $event->getAteliers()->getbackgroundColor(),
+    //             'borderColor' => $event->getAteliers()->getBorderColor(),
+    //             'textColor' => $event->getAteliers()->getTextColor()
 
 
-            ];
-        }
+    //         ];
+    //     }
 
-        $data =  json_encode($rdvs);
+    //     $data =  json_encode($rdvs);
        
-        return $this->renderForm('planning/calendrier.html.twig', [
+    //     return $this->renderForm('planning/calendrier.html.twig', [
             
-        'data' => $data,
-        'ferie' => $feries,
+    //     'data' => $data,
+    //     'ferie' => $feries,
 
-        ]);
-    }
+    //     ]);
+    // }
 }

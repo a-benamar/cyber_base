@@ -44,15 +44,15 @@ class AnimateurType extends AbstractType
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
-                  //  new NotBlank([
-                        //'message' => 'Entrez un mot de passe svp',
-                 //   ]),
-                  //  new Length([
-                      //  'min' => 6,
-                       // 'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères ',
+                   new NotBlank([
+                        'message' => 'Entrez un mot de passe svp',
+                   ]),
+                   new Length([
+                       'min' => 6,
+                       'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères ',
                         // max length allowed by Symfony for security reasons
-                       // 'max' => 4096,
-                 //   ]),
+                       'max' => 4096,
+                   ]),
                 ],
             ])
             ->add('roles', ChoiceType::class, [
@@ -63,7 +63,7 @@ class AnimateurType extends AbstractType
 
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Merci de choisir un role',
+                        'message' => 'Merci de séléctionner un role',
                     ])],
                 'multiple' => true,
                 'label' => 'Roles'

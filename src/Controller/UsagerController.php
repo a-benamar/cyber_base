@@ -107,7 +107,7 @@ class UsagerController extends AbstractController
         return $this->redirectToRoute('app_usager_index', [], Response::HTTP_SEE_OTHER);
     }
 
-  //  #[IsGranted('ROLE_ANIMATEUR')]
+    // #[IsGranted('ROLE_ANIMATEUR')]
     #[Route('/api/usager', name: 'api_usager', methods: ['GET'])]
     public function usagers(UsagerRepository $usagerRepository): Response
     {

@@ -1,100 +1,92 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Cyber Base - Planning
+    Cyber Base - Planning
 {% endblock %}
 
 {% block body %}
+    <div>
+        <h3 class="text-center fw-bold text-dark text-decoration-underline">PLANNING</h3>
 
-	<h3 class="text-center fw-bold text-dark text-decoration-underline">PLANNING</h3>
+    </div>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <table class="table table-hover table-striped text-start text-center mb-3">
 
-	{# <a class="btn btn-primary" href="{{ path('app_planning_new_usagers') }}">+ Planning</a> #}
-</div>
-{% for message in app.flashes('success') %}
-		<div class="alert alert-success mt-4">
-			{{ message }}
-		</div>
-	{% endfor %}
-	{# {% for message in app.flashes('error') %}
-		<div class="alert alert-danger mt-4">
-			{{ message }}
-		</div>
-	{% endfor %} #}
+        <thead>
+            <tr>
+                <th>Réf</th>
+                <th>Atelier</th>
+                <th>Animateur</th>
+                <th>Usagers inscrits</th>
+                <th>Date Création</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set i = 0 %}
+            {% for planning in ActifAteliers %}
+                <tr>
 
-<table class="table table-hover table-striped text-start text-center mb-3">
-
-	<thead>
-		<tr>
-			<th>Réf</th>
-			<th>Atelier</th>
-			<th>Animateur</th>
-			<th>Usagers inscrits</th>
-			<th>Date Création</th>
-			<th>actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% set i = 0 %}
-		{% for planning in ActifAteliers %}
-			<tr>
-
-				<td>CB-00{{ planning.id }}</td>
-				<td>
-					<b>{{ planning.ateliers }}</b>
-				</td>
-				<td>{{ planning.ateliers.animateurs }}</td>
-				<td>
-					{% if (counts[i][1] < planning.ateliers.nbrPlaces ) %}
-					{{ counts[i][1] }} / {{ planning.ateliers.nbrPlaces }}
-					{% else %}
-					{{ counts[i][1] }} / {{ planning.ateliers.nbrPlaces }}
-					<b class="text-danger">
-					(Complet)</b>
-					{% endif %}
-				</td>
-				<td>{{ planning.date ? planning.date|date('d-m-Y') : '' }}</td>
+                    <td>CB-00{{ planning.id }}</td>
+                    <td>
+                        <b>{{ planning.ateliers }}</b>
+                    </td>
+                    <td>{{ planning.ateliers.animateurs }}</td>
+                    <td>
+                        {% if (counts[i][1] < planning.ateliers.nbrPlaces ) %}
+                            {{ counts[i][1] }}
+                            /
+                            {{ planning.ateliers.nbrPlaces }}
+                        {% else %}
+                            {{ counts[i][1] }}
+                            /
+                            {{ planning.ateliers.nbrPlaces }}
+                            <b class="text-danger">
+                                (Complet)</b>
+                        {% endif %}
+                    </td>
+                    <td>{{ planning.date ? planning.date|date('d-m-Y') : '' }}</td>
 
 
-				<td class="d-flex justify-content-center">
-					{% if ( (counts[i][1] == planning.ateliers.nbrPlaces) or (planning.ateliers.statut != 'Confirmé') ) %}
-				
-					<a class="btn btn-sm btn-outline-secondary disabled" href="{{ path('app_planning_new_usager', {'atelier': planning.ateliers.id }) }}">
-						<i class="fa-solid fa-user-plus"></i>
-					</a>
-					{% else %}
-					<a class="btn btn-sm btn-outline-secondary " href="{{ path('app_planning_new_usager', {'atelier': planning.ateliers.id }) }}">
-						<i class="fa-solid fa-user-plus"></i>
-					</a>
-					{% endif %}
-					{% set i = i + 1 %}
-					
-					{# <a class="btn btn-outline-secondary" href="{{ path('app_planning_show', {'id': planning.id}) }}">
-															                        																																<i class="fa-regular fa-eye"></i>
-															                        																															</a> #}
-					<a class="btn btn-sm btn-outline-secondary mx-1" href="{{ path('show_liste_usagers_par_atelier', {'ateliers': planning.ateliers.id }) }}">
-						<i class="fa-solid fa-list"></i>
-					</a>
+                    <td class="d-flex justify-content-center">
+                        {% if ( (counts[i][1] == planning.ateliers.nbrPlaces) or (planning.ateliers.statut != 'Confirmé') ) %}
 
-					{# <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_planning_delete', {'id': planning.id}) }}">
-											<i class="fa-regular fa-trash-can"></i>
-										</a> #}
-					<form method="post" action="{{ path('app_planning_delete', {'id': planning.id}) }}" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
-						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ planning.id) }}">
-						<button class="btn btn-sm btn-outline-secondary">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</form>
-				</td>
-			</tr>
+                            <a class="btn btn-sm btn-outline-secondary disabled" href="{{ path('app_planning_new_usager', {'atelier': planning.ateliers.id }) }}">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </a>
+                        {% else %}
+                            <a class="btn btn-sm btn-outline-secondary " href="{{ path('app_planning_new_usager', {'atelier': planning.ateliers.id }) }}">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </a>
+                        {% endif %}
+                        {% set i = i + 1 %}
+                    </a>
+                    <a class="btn btn-sm btn-outline-secondary mx-1" href="{{ path('show_liste_usagers_par_atelier', {'ateliers': planning.ateliers.id }) }}">
+                        <i class="fa-solid fa-list"></i>
+                    </a>
 
-		{% else %}
+                    <form method="post" action="{{ path('app_planning_delete', {'id': planning.id}) }}" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ planning.id) }}">
+                            <button class="btn btn-sm btn-outline-secondary">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
 
-			<div class="alert alert-danger" role="alert">
-				Aucun enregistrement trouvé!
-			</div>
+            {% else %}
 
-		{% endfor %}
+                <div class="alert alert-danger" role="alert">
+                    Aucun enregistrement trouvé!
+                </div>
+
+            {% endfor %}
 
 
-	</tbody>
-</table>{% endblock %}
+        </tbody>
+    </table>
+{% endblock %}

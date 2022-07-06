@@ -13,12 +13,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+#[IsGranted('ROLE_SUPER_ANIMATEUR')]
 
 #[Route('/animateur')] //Cette annotation indique que tout URI utilisé par les méthodes
 
 class AnimateurController extends AbstractController
 {
-    #[IsGranted('ROLE_ANIMATEUR')]
     #[Route('/', name: 'app_animateur_index', methods: ['GET'])]
     public function index(AnimateurRepository $animateurRepository): Response
     {
@@ -29,7 +29,6 @@ class AnimateurController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_SUPER_ANIMATEUR')]
     #[Route('/new', name: 'app_animateur_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager,
      UserPasswordHasherInterface $userPasswordHasher): Response
@@ -51,6 +50,7 @@ class AnimateurController extends AbstractController
            //je sauvgarde dans la bdd
            $entityManager->flush();
 
+        //    $animlateurRepository->add($animateur);
             $this->addFlash(
                 'success',
                 "Animateur ajouté avec succès ."
@@ -64,7 +64,7 @@ class AnimateurController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_SUPER_ANIMATEUR')]
+
     #[Route('/{id}', name: 'app_animateur_show', methods: ['GET'])]
     public function show(Animateur $animateur): Response
     {
@@ -73,7 +73,7 @@ class AnimateurController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_ANIMATEUR')]
+
     #[Route('/{id}/edit', name: 'app_animateur_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Animateur $animateur, AnimateurRepository $animateurRepository, UserPasswordHasherInterface $userPasswordHasher): Response
     {
@@ -102,7 +102,6 @@ class AnimateurController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_SUPER_ANIMATEUR')]
     #[Route('/{id}', name: 'app_animateur_delete', methods: ['POST'])]
     public function delete(Request $request, Animateur $animateur, AnimateurRepository $animateurRepository): Response
     {

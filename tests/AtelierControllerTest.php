@@ -23,4 +23,18 @@ class AtelierControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h3', 'CATALOGUES ATELIERS');
     }
+
+//     public function testLoginWithBadCredentials()
+// {
+//     $client = static::createClient();
+//     $crawler = $client->request('GET', '/login');
+//     $form = $crawler->selectButton('Se connecter')->form([
+//         'email' => 'john@doe.fr',
+//         'password' => 'fakepassword'
+//     ]);
+//     $client->submit($form);
+//     $this->assertResponseRedirects('/login');
+//     $client->followRedirect();
+//     $this->assertSelectorExists('.alert.alert-danger');
+// }
 }

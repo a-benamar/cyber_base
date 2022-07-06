@@ -79,7 +79,7 @@ class AppFixtures extends Fixture
             
 
             $planning = new Planning();
-            $planning->setDate($Faker->dateTime());
+            $planning->setDate($Faker->dateTimeBetween('now', '+1year'));
             $planning->setUsagers($usager);
             $planning->setPostes($poste);
             $planning->setAteliers($atelier);

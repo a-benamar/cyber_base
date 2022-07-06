@@ -45,12 +45,12 @@
 
 					{% if is_granted('ROLE_SUPER_ANIMATEUR') %}
 						<td class="d-flex justify-content-center">
-							<a class="btn btn-outline-secondary" href="{{ path('app_animateur_show', 
+							<a class="btn btn-outline-secondary" href="{{ path('app_animateur_show',
 							{'id': animateur.id}) }}">
 								<i class="fa-regular fa-eye"></i>
 							</a>
 
-							<a class="btn btn-outline-secondary mx-1" href="{{ path('app_animateur_edit', 
+							<a class="btn btn-outline-secondary mx-1" href="{{ path('app_animateur_edit',
 							{'id': animateur.id}) }}">
 								<i class="fa-regular fa-pen-to-square"></i>
 							</a>
