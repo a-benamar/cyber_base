@@ -4,44 +4,45 @@
 {% endblock %}
 
 {% block body %}
-	<div id="calendar"></div>
-	<script>
-
-	
-		document.addEventListener('DOMContentLoaded', () => {
-var calendarEl = document.getElementById('calendar');
-
-var calendar = new FullCalendar.Calendar(calendarEl, {
-defaultView: 'dayGridMonth',
-locale: 'fr',
-timeZone: 'Europe/Paris',
-editable: false,
-
-header: {
-left: 'prev,next today',
-center: 'title',
-right: 'dayGridMonth,timeGridWeek,timeGridDay'
-
-},
-buttonText: {
-today: 'Aujourd\'hui',
-timeGridDay: 'Jour',
-timeGridWeek: 'Semaine',
-dayGridMonth: 'Mois'
-
-},
-events: {{data|raw }},
+    <div id="calendar"></div>
+    <script>
 
 
-plugins: [
-'interaction', 'dayGrid', 'timeGrid'
-], // https://fullcalendar.io/docs/plugin-index
+        document.addEventListener('DOMContentLoaded', () => {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                defaultView: 'dayGridMonth',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                editable: false,
+
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+
+                },
+                buttonText: {
+                    today: 'Aujourd\'hui',
+                    timeGridDay: 'Jour',
+                    timeGridWeek: 'Semaine',
+                    dayGridMonth: 'Mois'
+
+                },
+             
 
 
-});
+                plugins: [
+                    'interaction', 'dayGrid', 'timeGrid'
+                ], // https://fullcalendar.io/docs/plugin-index
 
-calendar.render();
-});
-	</script>
+
+            });
+
+            calendar.render();
+        });
+    </script>
 
 {% endblock %}
+   {# events: {{ data|raw }}, #}
